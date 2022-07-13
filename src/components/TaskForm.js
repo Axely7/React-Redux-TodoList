@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from "../features/tasks/taskSlice";
 import { v4 as uuid } from 'uuid';
+import {useNavigate} from 'react-router-dom'
 
 const TaskForm = () => {
 
@@ -10,7 +11,8 @@ const TaskForm = () => {
     description: ''
   })
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = e => {
     setTask({
@@ -25,6 +27,7 @@ const TaskForm = () => {
       ...task,
       id: uuid()
     }));
+    navigate('/');
   }
 
   return (
